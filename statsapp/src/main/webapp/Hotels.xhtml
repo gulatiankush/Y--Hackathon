@@ -16,30 +16,21 @@
 	<p:layout fullPage="true">
 	
 		<p:layoutUnit position="north" minSize="30" maxSize="90">
-        	<ui:include src="indexHeader.xhtml" />
+        	<ui:include src="HotelsHeader.xhtml" />
     	</p:layoutUnit>
 	
 	    <p:layoutUnit position="center" minHeight="200">
 			<h:form>  
-			    <p:dataTable var="menuItem" value="#{displayHotelTrendingMenu.menu}">  
-			        <p:column headerText="Name">  
-			            <h:outputText value="#{menuItem.name}" />  
-			        </p:column>
-			  
-			        <p:column headerText="Count">  
-			            <h:outputText value="#{menuItem.count}" />  
-			        </p:column>
-			  
-			    </p:dataTable>  
+				<p:dataTable var="hotel" value="#{hotelList.list}" rowKey="#{hotel.name}"  
+				                 selection="#{hotelList.selectedHotel}" selectionMode="single" width="" >  
+				  
+				        <p:column headerText="Name">  
+				            #{hotel.name}  
+				        </p:column>  
+				</p:dataTable>
+				<p:commandButton value="Submit" actionListener="#{hotelList.callURL}"/>  
 			</h:form> 
-	        
 	    </p:layoutUnit>
-		
-		<p:layoutUnit position="south" minSize="500" maxSize="550">
-			<ui:include src="chart.xhtml" />
-		</p:layoutUnit>
-
     </p:layout>
-
 </h:body>
 </html>

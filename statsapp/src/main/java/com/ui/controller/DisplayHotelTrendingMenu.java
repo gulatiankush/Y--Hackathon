@@ -9,24 +9,24 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import com.db.connection.DBQueryManager;
+import com.db.model.*;
 import com.ui.model.OrderItemInstance;
 
 @ManagedBean
 @SessionScoped
-public class DisplayHotelTrendingMenu implements Serializable {
-
+public class DisplayHotelTrendingMenu implements Serializable{
+	
 	private List<OrderItemInstance> menu;
-	@ManagedProperty(value = "#{hotelList}")
-	private HotelList hotelList;
-
+	@ManagedProperty(value="#{hotelList}")
+    private HotelList hotelList; 
+	
 	public DisplayHotelTrendingMenu() {
 		menu = new ArrayList<OrderItemInstance>();
 	}
 
 	public List<OrderItemInstance> getMenu() {
-		// TODO: Hardcoded Hotel
-		menu = new DBQueryManager().getTopMenuItem(getHotelList()
-				.getSelectedHotel().getId());
+		//TODO: Hardcoded Hotel
+		menu = new DBQueryManager().getTopMenuItem(getHotelList().getSelectedHotel().getId());
 		return menu;
 	}
 
@@ -40,5 +40,5 @@ public class DisplayHotelTrendingMenu implements Serializable {
 
 	public void setHotelList(HotelList hotelList) {
 		this.hotelList = hotelList;
-	}
+	}	
 }

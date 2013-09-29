@@ -1,8 +1,6 @@
 package com.db.model;
 
-import java.io.Serializable;
-
-public class Hotel implements Serializable {
+public class Hotel {
 	private int id = 0;
 	private String name = null;
 	private String address = null;

@@ -16,28 +16,26 @@
 	<p:layout fullPage="true">
 	
 		<p:layoutUnit position="north" minSize="30" maxSize="90">
-        	<ui:include src="indexHeader.xhtml" />
+        	<ui:include src="LoginHeader.xhtml" />
     	</p:layoutUnit>
 	
 	    <p:layoutUnit position="center" minHeight="200">
-			<h:form>  
-			    <p:dataTable var="menuItem" value="#{displayHotelTrendingMenu.menu}">  
-			        <p:column headerText="Name">  
-			            <h:outputText value="#{menuItem.name}" />  
-			        </p:column>
+		    <h:form id="form">  
+  
+			    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">  
 			  
-			        <p:column headerText="Count">  
-			            <h:outputText value="#{menuItem.count}" />  
-			        </p:column>
+			        <h:outputText value="Login Options: " />  
+			        <p:selectOneRadio id="options" value="#{user.name}">  
+			            <f:selectItem itemLabel="User" itemValue="user" />  
+			            <f:selectItem itemLabel="Waiter" itemValue="waiter" />  
+			        </p:selectOneRadio>  
 			  
-			    </p:dataTable>  
-			</h:form> 
-	        
+			    </h:panelGrid>  
+			    
+			    <p:commandButton id="submitButton" value="Login" action="Hotels?faces-redirect=true" />  
+			  
+			</h:form>
 	    </p:layoutUnit>
-		
-		<p:layoutUnit position="south" minSize="500" maxSize="550">
-			<ui:include src="chart.xhtml" />
-		</p:layoutUnit>
 
     </p:layout>
 

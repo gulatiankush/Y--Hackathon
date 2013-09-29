@@ -11,7 +11,6 @@ import java.util.List;
 
 import com.db.model.Hotel;
 import com.db.model.MenuItem;
-import com.google.appengine.api.utils.SystemProperty;
 import com.mysql.jdbc.Statement;
 import com.ui.model.OrderItemInstance;
 
@@ -29,7 +28,7 @@ public class DBQueryManager {
 		Connection connection = null;
 		DBConnectionManager connect = new DBConnectionManager();
 		connection = connect.getConnection(
-		/* "jdbc:mysql://localhost:3306/hotels" */getUrl(), "root", "");
+				"jdbc:mysql://localhost:3306/hotels", "root", "root");
 
 		try {
 			stmt = (Statement) connection.createStatement();
@@ -68,7 +67,7 @@ public class DBQueryManager {
 		Connection connection = null;
 		DBConnectionManager connect = new DBConnectionManager();
 		connection = connect.getConnection(
-		/* "jdbc:mysql://localhost:3306/hotels" */getUrl(), "root", "");
+				"jdbc:mysql://localhost:3306/hotels", "root", "root");
 
 		try {
 			stmt = (Statement) connection.createStatement();
@@ -109,7 +108,7 @@ public class DBQueryManager {
 		Connection connection = null;
 		DBConnectionManager connect = new DBConnectionManager();
 		connection = connect.getConnection(
-		/* "jdbc:mysql://localhost:3306/hotels" */getUrl(), "root", "");
+				"jdbc:mysql://localhost:3306/hotels", "root", "root");
 
 		try {
 			stmt = (Statement) connection.createStatement();
@@ -152,7 +151,7 @@ public class DBQueryManager {
 			// STEP 3: Open a connection
 			System.out.println("Connecting to a selected database...");
 			conn = new DBConnectionManager().getConnection(
-			/* "jdbc:mysql://localhost:3306/hotels" */getUrl(), "root", "");
+					"jdbc:mysql://localhost:3306/hotels", "root", "root");
 			System.out.println("Connected database successfully...");
 
 			// STEP 4: Execute a query
@@ -212,24 +211,4 @@ public class DBQueryManager {
 		}// end try
 	}
 
-	String getUrl() {
-		String url = null;
-		try {
-			if (SystemProperty.environment.value() == SystemProperty.Environment.Value.Production) {
-				// Load the class that provides the new "jdbc:google:mysql://"
-				// prefix.
-				Class.forName("com.mysql.jdbc.GoogleDriver");
-				url = "jdbc:google:mysql://db-connection-test:one/hotels?user=root";
-			} else {
-				// Local MySQL instance to use during development.
-				Class.forName("com.mysql.jdbc.Driver");
-				url = "jdbc:mysql://127.0.0.1:3306/hotels?user=root";
-			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return url;
-	}
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Test App</title>
+	<style>
+#mychart {
+	margin: 10px 10px 10px 10px;
+	width: 400px;
+	height: 400px;
+}
+</style>
+	<script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+	<script>YUI().use('charts-legend', function (Y) 
+            { 
+        // Create data 
+        var myDataValues = eval("#{chartData.jsonString}");
+        //var len = myDataValues.length;
+        //myDataValues = myDataValues.substr(1, len-2);
+        
+
+        var pieGraph = new Y.Chart({
+                render:"#mychart", 
+                categoryKey:"order", 
+                seriesKeys:["count"], 
+                dataProvider:myDataValues, 
+                type:"pie", 
+                legend:{
+                    width : 12,
+                    render:"#myLegend",
+                    position:"bottom"
+                    
+            },
+                seriesCollection:[
+                    {
+                        categoryKey:"order",
+                        valueKey:"count"
+                    }
+                ]
+            });
+    });
+            </script>
+</h:head>
+
+<h:body>
+
+
+	<div id="mychart" align="center"></div>
+	<div id="myLegend" align="center"></div>
+
+</h:body>
+</html>
