@@ -16,21 +16,21 @@ import com.db.model.Hotel;
 
 @ManagedBean
 @SessionScoped
-public class HotelList implements Serializable {
-
+public class HotelList implements Serializable{
+	
 	private List<Hotel> list;
-
+	
 	private Hotel selectedHotel;
 
-	@ManagedProperty(value = "#{user}")
+	@ManagedProperty(value="#{user}")
 	private User selectedUser;
-
+	
 	public HotelList() {
 		list = new ArrayList<Hotel>();
 	}
 
 	public List<Hotel> getList() {
-		// TODO: Hardcoded Hotel
+		//TODO: Hardcoded Hotel
 		list = new DBQueryManager().getHotels();
 		return list;
 	}
@@ -46,19 +46,16 @@ public class HotelList implements Serializable {
 	public void setSelectedHotel(Hotel selectedHotel) {
 		this.selectedHotel = selectedHotel;
 	}
-
+	
 	public void callURL() {
-		ExternalContext context = FacesContext.getCurrentInstance()
-				.getExternalContext();
-		try {
-			if (selectedUser.getName().equalsIgnoreCase("user")) {
-				context.redirect(context.getRequestContextPath()
-						+ "/faces/index.xhtml");
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		try{
+			if(selectedUser.getName().equalsIgnoreCase("user")) {
+				context.redirect(context.getRequestContextPath() + "/index.xhtml");
 			} else {
-				context.redirect(context.getRequestContextPath()
-						+ "/faces/Menu.xhtml");
+				context.redirect(context.getRequestContextPath() + "/Menu.xhtml");
 			}
-		} catch (IOException e) {
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}

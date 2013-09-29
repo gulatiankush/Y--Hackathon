@@ -1,33 +1,33 @@
 package com.ui.model;
 
 public class OrderItemInstance {
-
+	
 	private int id;
 	private String name;
 	private int count;
-
+	
 	public OrderItemInstance() {
-
+		
 	}
-
+	
 	public OrderItemInstance(String name) {
 		this.name = name;
 		System.out.println("Constructor");
 		this.count = 0;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public int getCount() {
 		return count;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -37,7 +37,7 @@ public class OrderItemInstance {
 	}
 
 	public void setCount(int count) {
-		System.out.println("Value: " + count);
+		System.out.println("Value: "+count);
 		this.count = count;
 	}
 }

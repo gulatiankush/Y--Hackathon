@@ -7,8 +7,8 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class User implements Serializable {
-
+public class User implements Serializable{
+	
 	private String name;
 
 	public String getName() {
@@ -18,5 +18,7 @@ public class User implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
 
 }

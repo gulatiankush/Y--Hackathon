@@ -4,6 +4,7 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
    <servlet>
         <servlet-name>sign</servlet-name>
         <servlet-class>guestbook.GuestbookServlet</servlet-class>
@@ -25,6 +26,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     Template JSF 2.0 application configured to run on the Google
     AppEngine for Java.
    </description>
+   	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>bootstrap</param-value>
+	</context-param>
+   
    <!-- ***** Designate server-side state saving. *****  -->
    <context-param>
       <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
