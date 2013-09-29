@@ -12,6 +12,7 @@ public class OrderItemInstance {
 	
 	public OrderItemInstance(String name) {
 		this.name = name;
+		System.out.println("Constructor");
 		this.count = 0;
 	}
 	

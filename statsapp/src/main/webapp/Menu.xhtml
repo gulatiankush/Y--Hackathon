@@ -27,21 +27,23 @@
 					</p:column>
 
 					<p:column headerText="Order Count">
-		                <p:spinner value="#{item.count}" min="0" max="20"/>  
+						<p:spinner value="#{item.count}" min="0" max="20" />
 					</p:column>
 				</p:dataTable>
 
-				<p:commandButton value="Submit" actionListener="#{order.insertItems}" update="display" />
+				<p:commandButton value="Submit"
+					actionListener="#{order.insertItems}" update="display" />
 
-					<p:dataTable id="display" var="item" value="#{order.orderItems}">
-						<p:column headerText="Item Name">
+				
+				<p:dataTable id="display" var="item" value="#{order.orderItems}">
+					<!--  p:column headerText="Item Name">
 							<h:outputText value="#{item.name}" />
 						</p:column>
 	
 						<p:column headerText="Order Count">
 							<h:outputText value="#{item.count}" />
-						</p:column>
-					</p:dataTable>
+						</p:column-->
+				</p:dataTable>
 
 			</h:form>
 		</p:layoutUnit>

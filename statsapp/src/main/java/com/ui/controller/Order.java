@@ -39,14 +39,13 @@ public class Order implements Serializable {
       
 	private void updateItems() {
 		// TODO: Hardcoded value for hotel
-		if(!orderItems.isEmpty()) {
-			orderItems.clear();
-		}
-		List<MenuItem> items = new DBQueryManager().getMenu(getHotelList().getSelectedHotel().getId());
-		for(MenuItem i : items) {
-			OrderItemInstance oi = new OrderItemInstance(i.getName());
-			orderItems.add(oi);
-		}
+		if(orderItems.isEmpty()) {
+			List<MenuItem> items = new DBQueryManager().getMenu(getHotelList().getSelectedHotel().getId());
+			for(MenuItem i : items) {
+				OrderItemInstance oi = new OrderItemInstance(i.getName());
+				orderItems.add(oi);
+			}
+		} 
 	}
 	
 	public void insertItems() {

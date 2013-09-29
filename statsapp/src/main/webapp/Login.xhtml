@@ -14,30 +14,35 @@
 <h:body>
 
 	<p:layout fullPage="true">
+	<p:layoutUnit position="north" minSize="200">
+	<h1>Dish It Up!</h1>
+	</p:layoutUnit>
 	
-		<p:layoutUnit position="north" minSize="30" maxSize="90">
-        	<ui:include src="LoginHeader.xhtml" />
-    	</p:layoutUnit>
-	
-	    <p:layoutUnit position="center" minHeight="200">
-		    <h:form id="form">  
-  
-			    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">  
-			  
-			        <h:outputText value="Login Options: " />  
-			        <p:selectOneRadio id="options" value="#{user.name}">  
-			            <f:selectItem itemLabel="User" itemValue="user" />  
-			            <f:selectItem itemLabel="Waiter" itemValue="waiter" />  
-			        </p:selectOneRadio>  
-			  
-			    </h:panelGrid>  
-			    
-			    <p:commandButton id="submitButton" value="Login" action="Hotels?faces-redirect=true" />  
-			  
-			</h:form>
-	    </p:layoutUnit>
+		<p:layoutUnit position="center" minHeight="200" minWidth="400">
+			<h:form id="form">
+				<p:panelGrid columns="1">
+					<f:facet name="header">  
+     				   Who are you?
+    				</f:facet>
 
-    </p:layout>
+					<p:selectOneRadio id="options" value="#{user.name}">
+						<f:selectItem itemLabel="Foodie" itemValue="user" />
+						<f:selectItem itemLabel="Server (..the human)" itemValue="waiter" />
+					</p:selectOneRadio>
+
+					<f:facet name="footer">
+						<p:commandButton id="submitButton" value="Let me in!"
+							action="Hotels?faces-redirect=true" />
+
+					</f:facet>
+				</p:panelGrid>
+
+			</h:form>
+		</p:layoutUnit>
+	<p:layoutUnit position="south" minSize="200" />
+		<p:layoutUnit position="east" minSize="200" maxSize="400" />
+			<p:layoutUnit position="west" minSize="200" maxSize="400" />
+	</p:layout>
 
 </h:body>
 </html>
